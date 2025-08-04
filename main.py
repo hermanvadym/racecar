@@ -15,7 +15,9 @@ def main():
     running = True
     dt = 0 # stores the time in seconds since last frame, used for smooth movement
     
+    
     player_screen_width_center, player_screen_height_center = find_screen_center(screen)
+
     player_car = pygame.Rect(player_screen_width_center, player_screen_height_center + 350, 100, 120)
     
     #left_line = w3
@@ -31,19 +33,22 @@ def main():
         screen.fill("black") # clear screen
 
         pygame.draw.rect(screen, "red", player_car)
+        pygame.draw.line(screen, "white", (player_screen_width_center - 300, screen.get_height()), (player_screen_width_center - 300, 0), width=30)
+        pygame.draw.line(screen, "white", (player_screen_width_center + 350, screen.get_height()), (player_screen_width_center + 350, 0), width=30)
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w] and player_car.y > 20:
             player_car.y -= 1300 * dt
-        if keys[pygame.K_s] and player_car.y < 850:
+        if keys[pygame.K_s] and player_car.y < 900:
             player_car.y += 1300 * dt
-        if keys[pygame.K_a] and player_car.x > 5:
+        if keys[pygame.K_a] and player_car.x > 20:
             player_car.x -= 1300 * dt
-        if keys[pygame.K_d] and player_car.x < 1798:
+        if keys[pygame.K_d] and player_car.x < 1785:
             player_car.x += 1300 * dt
         
         #print(player_car.x)
 
+        
 
         # flip() the display to put your work on screen
         pygame.display.flip() # show the frame
